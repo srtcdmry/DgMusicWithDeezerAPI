@@ -9,5 +9,6 @@
     <string name="listen_tracks">Click to Listen to Tracks</string>
     <string name="stop">Stop Playing</string>
     <string name="colon">:</string>
+    <string name="songs">Şarkılar</string>
 </resources>
 

@@ -3,12 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/sertac.demiray/Downloads/DeezerAPI_Project-master (2)/DeezerAPI_Project-master/app/src/main/res/layout/activity_album.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/sertac.demiray/Downloads/DeezerAPI_Project-master (2)/DeezerAPI_Project-master/app/src/main/res/layout/activity_album_artist.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/sertac.demiray/Downloads/DeezerAPI_Project-master (2)/DeezerAPI_Project-master/app/src/main/res/layout/activity_album_artist_track.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/sertac.demiray/Downloads/DeezerAPI_Project-master (2)/DeezerAPI_Project-master/app/src/main/res/layout/activity_album_track.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/sertac.demiray/Downloads/DeezerAPI_Project-master (2)/DeezerAPI_Project-master/app/src/main/res/layout/activity_artist.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/sertac.demiray/Downloads/DeezerAPI_Project-master (2)/DeezerAPI_Project-master/app/src/main/res/layout/activity_artist_track.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/sertac.demiray/Downloads/DeezerAPI_Project-master (2)/DeezerAPI_Project-master/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/sertac.demiray/Downloads/DeezerAPI_Project-master (2)/DeezerAPI_Project-master/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/sertac.demiray/Downloads/DeezerAPI_Project-master (2)/DeezerAPI_Project-master/app/src/main/res/layout/activity_playlist.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/sertac.demiray/Downloads/DeezerAPI_Project-master (2)/DeezerAPI_Project-master/app/src/main/res/layout/activity_playlist_track.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/sertac.demiray/Downloads/DeezerAPI_Project-master (2)/DeezerAPI_Project-master/app/src/main/res/layout/activity_search_album_activity.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/sertac.demiray/Downloads/DeezerAPI_Project-master (2)/DeezerAPI_Project-master/app/src/main/res/layout/artist_result.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/sertac.demiray/Downloads/DeezerAPI_Project-master (2)/DeezerAPI_Project-master/app/src/main/res/layout/item_result.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/sertac.demiray/Downloads/DeezerAPI_Project-master (2)/DeezerAPI_Project-master/app/src/main/res/layout/playlist_result.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/sertac.demiray/Downloads/DeezerAPI_Project-master (2)/DeezerAPI_Project-master/app/src/main/res/layout/track_result.xml" value="0.20833333333333334" />
       </map>
     </option>
   </component>

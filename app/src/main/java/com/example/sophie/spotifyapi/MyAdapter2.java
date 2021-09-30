@@ -20,7 +20,10 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder>{
     private String mduration;
     private String sduration;
 
+
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
+
 
         public TextView titleTextView;
         public TextView durationTextView;
@@ -53,6 +56,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder>{
         final TrackResult result = mDataset.get(position);
         holder.titleTextView.setText(result.getTitle());
         String s = result.getDuration().toString();
+
         Log.d(TAG, s);
         if (s.length()==3) {
             mduration = s.substring(0, 1);

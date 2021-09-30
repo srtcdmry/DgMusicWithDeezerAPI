@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import org.parceler.Parcels;
+import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,14 +31,15 @@ public class ArtistActivity extends AppCompatActivity {
     @BindView(R.id.main6_fans)
     TextView fansTextView;
 
-    @BindView(R.id.main6_radio)
-    TextView radioTextView;
+//    @BindView(R.id.main6_radio)
+//    TextView radioTextView;
 
     @BindView(R.id.main6_link)
     Button linkButton;
 
     @BindView(R.id.main6_tracklist)
     Button tracklistButton;
+
 
 
     @Override
@@ -51,12 +53,12 @@ public class ArtistActivity extends AppCompatActivity {
         final ArtistResult result = Parcels.unwrap(mainIntent.getParcelableExtra("SELECTED_RESULT"));
 
         nameTextView.setText(result.getName());
-        albumsTextView.setText("Number of Albums: " + result.getAlbums().toString());
-        fansTextView.setText("Number of Fans: " + result.getFans().toString());
-        String radio = result.getRadio().toString().substring(0,1).toUpperCase() + result.getRadio().toString().substring(1);
-        radioTextView.setText("On the Radio: " + radio);
+        albumsTextView.setText("Albüm Sayısı : " + result.getAlbums().toString());
+        fansTextView.setText("Fan Sayısı : " + result.getFans().toString());
+        //String radio = result.getRadio().toString().substring(0,1).toUpperCase() + result.getRadio().toString().substring(1);
+        //radioTextView.setText("On the Radio: " + radio);
         linkButton.setText(result.getLink());
-        tracklistButton.setText("Tracks");
+        tracklistButton.setText("Şarkılar");
 
         Glide.with(this ).load(result.getPicture()).into(pictureImageView);
 

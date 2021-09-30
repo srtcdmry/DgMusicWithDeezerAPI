@@ -33,11 +33,13 @@ public class AlbumActivity extends AppCompatActivity {
     @BindView(R.id.main2_tracks)
     TextView tracksTextView;
 
-    @BindView(R.id.main2_explicit)
-    TextView explicitTextView;
 
-    @BindView(R.id.main2_artist)
-    ImageButton artistButton;
+
+   // @BindView(R.id.main2_explicit)
+    //TextView explicitTextView;
+
+   // @BindView(R.id.main2_artist)
+    //ImageButton artistButton;
 
     @BindView(R.id.main2_artistText)
     TextView artistTextView;
@@ -59,10 +61,10 @@ public class AlbumActivity extends AppCompatActivity {
         final DeezerResult result = Parcels.unwrap(mainIntent.getParcelableExtra("SELECTED_RESULT"));
 
         titleTextView.setText(result.getTitle());
-        typeTextView.setText("Record Type: "+ result.getType());
-        tracksTextView.setText("Number of Tracks: "+ result.getTracks().toString());
+        typeTextView.setText("Albüm Türü : "+ result.getType());
+        tracksTextView.setText("Şarkı Sayısı : "+ result.getTracks().toString());
         String explicit = result.getExplicit().toString().substring(0,1).toUpperCase() + result.getExplicit().toString().substring(1);
-        explicitTextView.setText("  Explicit: " + explicit );
+        //explicitTextView.setText("  Explicit: " + explicit );
         artistTextView.setText(result.artist.getName());
         linkButton.setText(result.getLink());
 
@@ -77,15 +79,15 @@ public class AlbumActivity extends AppCompatActivity {
             }
         });
 
-        artistButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), AlbumArtistActivity.class);
-                intent.putExtra("RESULTS_SELECTED", Parcels.wrap(result));
-                startActivity(intent);
-
-            }
-        });
+//        artistButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getBaseContext(), AlbumArtistActivity.class);
+//                intent.putExtra("RESULTS_SELECTED", Parcels.wrap(result));
+//               // startActivity(intent);
+//
+//            }
+//        });
 
         tracksButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -5,21 +5,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="dgmusic.PlaylistTrackActivity">
+    tools:context=".PlaylistTrackActivity"
+    android:background="@color/colourBlack">
 
     <LinearLayout
         android:id="@+id/main9_linear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@null"
-            android:src="@mipmap/ic_launcher_play_bluewhite_round"/>
+            android:src="@mipmap/ic_launcher_play_blackwhite" />
 
         <TextView
             android:id="@+id/main9_tracks"
@@ -27,16 +28,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/tracks"
-            android:textColor="@color/colorBlue"
-            android:textSize="60dp"/>
+            android:textColor="@color/colourWhite"
+            android:textSize="60dp" />
 
         <ImageButton
             android:id="@+id/main9_stop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher_pause_red_round"
+            android:layout_width="44dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="80dp"
-            android:background="@null"/>
+            android:background="@null"
+            android:src="@android:drawable/ic_media_pause" />
 
     </LinearLayout>
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colourBlack">
@@ -17,7 +18,8 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:background="@null"
-            android:src="@mipmap/ic_launcher_music_black_round" />
+            android:src="@android:drawable/ic_menu_slideshow"
+             />
 
         <TextView
             android:id="@+id/track_title"
@@ -35,7 +37,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:background="@null"
-            android:src="@mipmap/ic_launcher_person_blue_round" />
+            android:src="@android:drawable/ic_menu_my_calendar"/>
 
         <TextView
             android:id="@+id/track_artist"
@@ -51,7 +53,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:background="@null"
-            android:src="@mipmap/ic_launcher_clock_red_round" />
+            android:src="@android:drawable/stat_notify_voicemail" />
 
         <TextView
             android:id="@+id/track_duration"

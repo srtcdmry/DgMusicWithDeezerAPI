@@ -9,11 +9,14 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
- import com.google.gson.Gson;
+import com.example.sophie.spotifyapi.databinding.ActivityMainBinding;
+import com.example.sophie.spotifyapi.databinding.ActivitySearchAlbumActivityBinding;
+import com.google.gson.Gson;
 
 import org.parceler.Parcels;
 
@@ -22,47 +25,50 @@ import java.util.ArrayList;
 
 public class SearchAlbumActivity extends AppCompatActivity implements Results, OnResultSelectedInterface, OnPlaylistResultSelectedInterface, OnArtistResultSelectedInterface, OnTrackResultsSelectedInterface {
     private final static String TAG = "LogTag";
-
+    private ActivitySearchAlbumActivityBinding binding;
     private String url = "https://api.deezer.com/search/album/?q=";
     private EditText name;
     private TextView title;
-    private ArrayList<DeezerResult> deezerResults = new ArrayList<>();
-    private ArrayList<TrackResult> trackResults = new ArrayList<>();
-    private ArrayList<ArtistResult> artistResults = new ArrayList<>();
-    private ArrayList<PlaylistResult> playlistResults = new ArrayList<>();
+    private final ArrayList<DeezerResult> deezerResults = new ArrayList<>();
+    private final ArrayList<TrackResult> trackResults = new ArrayList<>();
+    private final ArrayList<ArtistResult> artistResults = new ArrayList<>();
+    private final ArrayList<PlaylistResult> playlistResults = new ArrayList<>();
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.Adapter mAdapterTracks;
     private RecyclerView.Adapter mAdapterArtists;
     private RecyclerView.Adapter mAdapterPlaylist;
     private HttpGetRequest getRequest;
-    private Gson gson = new Gson();
-    private MediaPlayer mediaPlayer = new MediaPlayer();
-    private TextView textView;
-    private EditText editText;
-    private Button button ;
+    private final Gson gson = new Gson();
+    private final MediaPlayer mediaPlayer = new MediaPlayer();
+    // private TextView textView;
+    //private EditText editText;
+    private Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_album_activity);
-       // editText = findViewById(R.id.editText);
-        textView = findViewById(R.id.textView);
-       // button = findViewById(R.id.button);
+        binding = ActivitySearchAlbumActivityBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+        // editText = findViewById(R.id.editText);
+        //textView = findViewById(R.id.textView);
+        // button = findViewById(R.id.button);
         Intent intent = getIntent();
-       // textView.setText(data);
+        // textView.setText(data);
 
 
-                setRecycleViewAlbum();
-                String data = intent.getStringExtra("key");
-                textView.setText("'"+data+"'"+" Arama sonucu");
+        setRecycleViewAlbum();
+        String data = intent.getStringExtra("key");
+        binding.textView.setText("'" + data + "'" + " Arama sonucu");
 
-               // String data = editText.getText().toString();
-                if(data.length()>0) {
-                    searchAlbum(data);
-                }
-
+        // String data = editText.getText().toString();
+        if (data.length() > 0) {
+            searchAlbum(data);
+        }
 
 
     }
+
     public void searchAlbum(CharSequence s) {
 
         if (getRequest != null && !getRequest.isCancelled()) {
@@ -80,10 +86,11 @@ public class SearchAlbumActivity extends AppCompatActivity implements Results, O
         getRequest = new HttpGetRequest(this);
         getRequest.execute(myUrl);
     }
-    public void setRecycleViewAlbum(){
+
+    public void setRecycleViewAlbum() {
         RecyclerView rv = findViewById(R.id.main_rv);
         rv.setHasFixedSize(true);
-        GridLayoutManager mLayoutManager = new GridLayoutManager(this,2);
+        GridLayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         rv.setLayoutManager(mLayoutManager);
         mAdapter = new MyAdapter(this, deezerResults, this);
         rv.setAdapter(mAdapter);
@@ -98,17 +105,17 @@ public class SearchAlbumActivity extends AppCompatActivity implements Results, O
             deezerResults.clear();
             deezerResults.addAll(responseDeezer.getData());
             mAdapter.notifyDataSetChanged();
-        }else if (url.equals("https://api.deezer.com/search/track/?q=")){
+        } else if (url.equals("https://api.deezer.com/search/track/?q=")) {
             TrackResponse responseTrack = gson.fromJson(result, TrackResponse.class);
             trackResults.clear();
             trackResults.addAll(responseTrack.getData());
             mAdapterTracks.notifyDataSetChanged();
-        }else if (url.equals("https://api.deezer.com/search/artist/?q=")) {
+        } else if (url.equals("https://api.deezer.com/search/artist/?q=")) {
             ArtistResponse responseArtist = gson.fromJson(result, ArtistResponse.class);
             artistResults.clear();
             artistResults.addAll(responseArtist.getData());
             mAdapterArtists.notifyDataSetChanged();
-        }else if (url.equals("https://api.deezer.com/search/playlist/?q=")) {
+        } else if (url.equals("https://api.deezer.com/search/playlist/?q=")) {
             PlaylistResponse responsePlaylist = gson.fromJson(result, PlaylistResponse.class);
             playlistResults.clear();
             playlistResults.addAll(responsePlaylist.getData());
@@ -129,6 +136,8 @@ public class SearchAlbumActivity extends AppCompatActivity implements Results, O
         try {
             String music = trackResult.getPreview();
             Log.d(TAG, music);
+            mediaPlayer.stop();
+            mediaPlayer.reset();
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mediaPlayer.setDataSource(music);
             mediaPlayer.prepare();

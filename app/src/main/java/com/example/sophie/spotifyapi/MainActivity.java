@@ -2,6 +2,7 @@ package com.example.sophie.spotifyapi;
 
 import android.content.Intent;
 import android.media.AudioManager;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +16,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
- import com.google.gson.Gson;
+import com.example.sophie.spotifyapi.databinding.ActivityMainBinding;
+import com.google.gson.Gson;
 
 import org.parceler.Parcels;
 
@@ -25,10 +27,10 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements Results, OnResultSelectedInterface, OnPlaylistResultSelectedInterface, OnArtistResultSelectedInterface, OnTrackResultsSelectedInterface {
 
     private final static String TAG = "LogTag";
-
+    private ActivityMainBinding binding ;
     private String url = "https://api.deezer.com/search/album/?q=";
-    private EditText name;
-    private TextView title;
+   // private EditText name;
+    //private TextView title;
     private ArrayList<DeezerResult> deezerResults = new ArrayList<>();
     private ArrayList<TrackResult> trackResults = new ArrayList<>();
     private ArrayList<ArtistResult> artistResults = new ArrayList<>();
@@ -41,25 +43,45 @@ public class MainActivity extends AppCompatActivity implements Results, OnResult
     private Gson gson = new Gson();
     private MediaPlayer mediaPlayer = new MediaPlayer();
     private ImageButton b;
+    private ImageButton stopButton1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
-        name = findViewById(R.id.main_input);
-        final ImageButton searchAlbum = findViewById(R.id.btn_searchAlbum);
-        final ImageButton searchTrack = findViewById(R.id.btn_searchTrack);
-        final ImageButton searchArtist = findViewById(R.id.btn_searchArtist);
-        final ImageButton searchPlaylist = findViewById(R.id.btn_searchPlaylist);
-        final ImageButton stopButton = findViewById(R.id.btn_stop);
+/*       // setContentView(R.layout.activity_main);
+        //name = findViewById(R.id.main_input);
+        //final ImageButton stopButton1 = findViewById(R.id.stopButton);
+       // final ImageButton searchAlbum = findViewById(R.id.btn_searchAlbum);
+       // final ImageButton searchTrack = findViewById(R.id.btn_searchTrack);
+       // final ImageButton searchArtist = findViewById(R.id.btn_searchArtist);
+        //final ImageButton searchPlaylist = findViewById(R.id.btn_searchPlaylist);
+       // final ImageButton stopButton = findViewById(R.id.btn_stop);   viewBinding ile yapıldı. */
 
-        searchAlbum.setOnClickListener(new View.OnClickListener() {
+
+        binding.stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(MyMediaPlayer.getMediaPlayerInstance().mediaPlayer.isPlaying()) {
+                    MyMediaPlayer.getMediaPlayerInstance().pauseAudioFile();
+                    // mediaPlayer.reset();
+                }
+                else if (!MyMediaPlayer.getMediaPlayerInstance().mediaPlayer.isPlaying()) {
+                    MyMediaPlayer.getMediaPlayerInstance().mediaPlayer.start();
+
+                }
+            }
+        });
+
+        binding.btnSearchAlbum.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if (name.getText().toString().length() > 0) {
+                if (binding.mainInput.getText().toString().length() > 0) {
                     Intent intent = new Intent(MainActivity.this, SearchAlbumActivity.class);
-                    intent.putExtra("key", name.getText().toString());
+                    intent.putExtra("key", binding.mainInput.getText().toString());
                     startActivity(intent);
                 }
 
@@ -72,41 +94,47 @@ public class MainActivity extends AppCompatActivity implements Results, OnResult
             }
         });
 
-        searchTrack.setOnClickListener(new View.OnClickListener() {
+        binding.btnSearchTrack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setRecycleViewTracks();
-                String s = name.getText().toString();
+                String s = binding.mainInput.getText().toString();
                 if (s.length() > 0) {
                     searchTrack(s);
                 }
             }
         });
 
-        searchArtist.setOnClickListener(new View.OnClickListener() {
+        binding.btnSearchArtist.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setRecycleViewArtist();
-                String s = name.getText().toString();
+                String s = binding.mainInput.getText().toString();
                 if (s.length() > 0) {
                     searchArtist(s);
                 }
             }
         });
 
-        searchPlaylist.setOnClickListener(new View.OnClickListener() {
+        binding.btnSearchPlaylist.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 setRecycleViewPlaylist();
-                String s = name.getText().toString();
+                String s = binding.mainInput.getText().toString();
                 if (s.length() > 0) {
                     searchPlaylist(s);
                 }
             }
         });
 
-        stopButton.setOnClickListener(new View.OnClickListener() {
+        binding.btnStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mediaPlayer.stop();
-                mediaPlayer.reset();
+                if(mediaPlayer.isPlaying()) {
+                    mediaPlayer.pause();
+                    // mediaPlayer.reset();
+                }
+                else if (!mediaPlayer.isPlaying()) {
+                    mediaPlayer.start();
+                }
             }
         });
 
@@ -287,16 +315,20 @@ public class MainActivity extends AppCompatActivity implements Results, OnResult
 
     @Override
     public void onResultSelected(TrackResult trackResult) {
-        try {
+//        try {
             String music = trackResult.getPreview();
-            Log.d(TAG, music);
-            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            mediaPlayer.setDataSource(music);
-            mediaPlayer.prepare();
-            mediaPlayer.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        MyMediaPlayer.getMediaPlayerInstance().stopAudioFile();
+        MyMediaPlayer.getMediaPlayerInstance().playAudioFile(this,music);
+//            Log.d(TAG, music);
+//            mediaPlayer.stop();
+//            mediaPlayer.reset();
+//            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//            mediaPlayer.setDataSource(music);
+//            mediaPlayer.prepare();
+//            mediaPlayer.start();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override

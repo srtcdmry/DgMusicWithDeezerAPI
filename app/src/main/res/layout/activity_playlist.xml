@@ -5,13 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="dgmusic.PlaylistActivity">
+    tools:context=".PlaylistActivity"
+    android:background="@color/colourBlack">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:context="dgmusic.ArtistActivity">
+        tools:context="dgmusic.ArtistActivity"
+        android:background="@color/colourBlack">
 
     <TextView
         android:id="@+id/main8_title"
@@ -20,7 +22,7 @@
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
         android:textSize="50dp"
-        android:textColor="@color/colourBlack"
+        android:textColor="@color/colourWhite"
         android:text="Name: "/>
 
     <ImageView
@@ -36,13 +38,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:background="@color/colourBlack">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@null"
-                android:src="@mipmap/ic_launcher_album_bluewhite_round"/>
+                android:src="@android:drawable/stat_sys_headset"/>
 
             <TextView
                 android:id="@+id/main8_tracks"
@@ -50,9 +53,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:textSize="30dp"
-                android:textColor="@color/colorBlue"
-                android:text="Name: "/>
+                android:textSize="20dp"
+                android:text="Name: "
+                android:textColor="@color/colourWhite" />
 
 
         </LinearLayout>
@@ -62,25 +65,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@null"
-                android:src="@mipmap/ic_launcher_public_redwhite_round"/>
-
-            <TextView
-                android:id="@+id/main8_public"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:textSize="30dp"
-                android:textColor="@color/colorRed"
-                android:text="Name: "/>
-
-        </LinearLayout>
+            android:gravity="center_horizontal"
+            android:background="@color/colourBlack"/>
 
 
         <LinearLayout
@@ -88,26 +74,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@null"
-                android:src="@mipmap/ic_launcher_clock_yellowwhite_round" />
-
-            <TextView
-                android:id="@+id/main8_creation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center_horizontal"
-                android:textSize="30dp"
-                android:textColor="@color/colourYellow"
-                android:text="Name: "/>
-
-        </LinearLayout>
+            android:gravity="center_horizontal"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -119,16 +86,18 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@mipmap/ic_launcher_play_greenwhite_round"/>
-
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:src="@mipmap/ic_launcher_play_blackwhite_round"/>
             <Button
                 android:id="@+id/main8_tracklist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
-                android:textSize="25dp"
-                android:textColor="@color/colourGreen"
+                android:textSize="20dp"
+                android:textColor="@color/colourWhite"
                 android:text="Name"
                 style="?android:attr/borderlessButtonStyle"/>
         </LinearLayout>
@@ -144,16 +113,15 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:background="@null"
-                android:src="@mipmap/ic_launcher_computer_pinkwhite_round"/>
-
+                android:src="@android:drawable/ic_menu_info_details"/>
             <Button
                 android:id="@+id/main8_link"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
-                android:textSize="25dp"
-                android:textColor="@color/colourPink"
+                android:textSize="15dp"
+                android:textColor="@color/colorRed"
                 style="?android:attr/borderlessButtonStyle"/>
 
         </LinearLayout>

@@ -3,13 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/colourBlack">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:context="dgmusic.ArtistActivity">
+        tools:context=".ArtistActivity"
+        android:background="@color/colourBlack">
 
         <TextView
             android:id="@+id/main6_name"
@@ -18,7 +20,7 @@
             android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
             android:textSize="50dp"
-            android:textColor="@color/colourBlack"
+            android:textColor="@color/colourWhite"
             android:text="Name: "/>
 
         <ImageView
@@ -34,23 +36,24 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:background="@color/colourBlack">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@null"
-                android:src="@mipmap/ic_launcher_smile_bluewhite_round"/>
+                android:src="@android:drawable/stat_sys_headset" />
 
             <TextView
                 android:id="@+id/main6_fans"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_gravity="center"
-                android:textSize="30dp"
-                android:textColor="@color/colorBlue"
-                android:text="Name: "/>
+                android:gravity="center"
+                android:text="Name: "
+                android:textColor="@color/colourWhite"
+                android:textSize="20dp" />
 
         </LinearLayout>
 
@@ -60,23 +63,25 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:background="@color/colourBlack">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@null"
-                android:src="@mipmap/ic_launcher_album_redwhite_round"/>
+                android:src="@android:drawable/ic_lock_silent_mode_off"
+                app:srcCompat="@android:drawable/ic_lock_silent_mode_off"/>
 
             <TextView
                 android:id="@+id/main6_albums"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_gravity="center"
-                android:textSize="30dp"
-                android:textColor="@color/colorRed"
-                android:text="Name: "/>
+                android:gravity="center"
+                android:text="Name: "
+                android:textColor="@color/colourWhite"
+                android:textSize="20dp" />
 
         </LinearLayout>
 
@@ -86,25 +91,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@null"
-                android:src="@mipmap/ic_launcher_radio_yellowwhite_round"/>
-
-            <TextView
-                android:id="@+id/main6_radio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:textSize="30dp"
-                android:textColor="@color/colourYellow"
-                android:text="Name: "/>
-
-        </LinearLayout>
+            android:gravity="center_horizontal"
+            android:background="@color/colourBlack"/>
 
 
         <LinearLayout
@@ -112,24 +100,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:background="@color/colourBlack">
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
-                android:src="@mipmap/ic_launcher_play_greenwhite_round"/>
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:src="@mipmap/ic_launcher_play_blackwhite_round" />
 
             <Button
                 android:id="@+id/main6_tracklist"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
-                android:textSize="25dp"
-                android:textColor="@color/colourGreen"
                 android:text="Name"
-                style="?android:attr/borderlessButtonStyle"/>
+                android:textColor="@color/colourWhite"
+                android:textSize="20dp" />
 
         </LinearLayout>
 
@@ -139,23 +129,24 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:background="@color/colourBlack">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@null"
-                android:src="@mipmap/ic_launcher_computer_pinkwhite_round"/>
+                android:src="@android:drawable/ic_menu_info_details"/>
 
             <Button
                 android:id="@+id/main6_link"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="25dp"
-                android:textColor="@color/colourPink"
-                style="?android:attr/borderlessButtonStyle"/>
+                android:textColor="@color/colorBlue"
+                android:textSize="15dp" />
 
         </LinearLayout>
 

@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
- import com.google.gson.Gson;
+import com.example.sophie.spotifyapi.databinding.ActivityMainBinding;
+import com.example.sophie.spotifyapi.databinding.ActivityPlaylistTrackBinding;
+import com.google.gson.Gson;
 
 import org.parceler.Parcels;
 
@@ -19,7 +22,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class PlaylistTrackActivity extends AppCompatActivity implements  Results, OnTrackResultsSelectedInterface{
-
     private RecyclerView.Adapter mAdapter;
     private ArrayList<TrackResult> trackResults = new ArrayList<>();
     private HttpGetRequest getRequest;
@@ -58,25 +60,39 @@ public class PlaylistTrackActivity extends AppCompatActivity implements  Results
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mediaPlayer.stop();
-                mediaPlayer.reset();
-            }
+
+                if(MyMediaPlayer.getMediaPlayerInstance().mediaPlayer.isPlaying()) {
+                    MyMediaPlayer.getMediaPlayerInstance().pauseAudioFile();
+                    // mediaPlayer.reset();
+                }
+                else if (!MyMediaPlayer.getMediaPlayerInstance().mediaPlayer.isPlaying()) {
+                    MyMediaPlayer.getMediaPlayerInstance().mediaPlayer.start();
+
+                }
+           }
         });
 
     }
 
 
     @Override
-    public void onResultSelected(TrackResult trackResult) {
-        try {
+    public void onResultSelected(TrackResult trackResult)  {
+//        try {
             String music = trackResult.getPreview();
-            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            mediaPlayer.setDataSource(music);
-            mediaPlayer.prepare();
-            mediaPlayer.start();
-        }catch(IOException e){
-            e.printStackTrace();
-        }
+            Intent intent = new Intent(PlaylistTrackActivity.this,MyMediaPlayer.class);
+            intent.putExtra("key",music);
+            //mediaPlayer.stop();
+//            mediaPlayer.reset();
+//            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//            mediaPlayer.setDataSource(music);
+//            mediaPlayer.prepare();
+           //mediaPlayer.start();
+        MyMediaPlayer.getMediaPlayerInstance().stopAudioFile();
+            MyMediaPlayer.getMediaPlayerInstance().playAudioFile(this,music);
+
+//        }catch(IOException e){
+//            e.printStackTrace();
+//        }
     }
 
     @Override
@@ -85,4 +101,6 @@ public class PlaylistTrackActivity extends AppCompatActivity implements  Results
         trackResults.addAll(responseTrack.getData());
         mAdapter.notifyDataSetChanged();
     }
+
+
 }

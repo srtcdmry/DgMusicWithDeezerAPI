@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context="dgmusic.MainActivity">
+    tools:context=".MainActivity">
 
     <EditText
         android:id="@+id/main_input"
@@ -17,6 +17,22 @@
         android:hint="Search.."
         android:textColor="#FFFFFF"
         android:textColorHint="#A8FFFFFF" />
+
+
+
+    <ImageButton
+        android:id="@+id/stopButton"
+        android:layout_width="65dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:background="@color/colourBlack"
+        android:src="@drawable/pausebutton_foreground" />
 
     <ImageButton
         android:id="@+id/btn_stop"
@@ -86,5 +102,8 @@
         android:layout_marginTop="30dp">
 
     </android.support.v7.widget.RecyclerView>
+
+
+
 
 </RelativeLayout>

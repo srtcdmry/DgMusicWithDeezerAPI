@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="dgmusic.ArtistTrackActivity"
+    tools:context=".ArtistTrackActivity"
     android:background="@color/colourBlack">
 
     <LinearLayout
@@ -29,16 +29,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Şarkılar"
-            android:textColor="@color/colorBlue"
+            android:textColor="@color/colourWhite"
             android:textSize="50dp" />
 
         <ImageButton
             android:id="@+id/main7_stop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="56dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="100dp"
             android:background="@null"
-            android:src="@drawable/pause" />
+            android:src="@android:drawable/ic_media_pause" />
 
     </LinearLayout>
 
